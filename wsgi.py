@@ -4,21 +4,23 @@ import tornado.web
 import tornado.wsgi
 import tornado.httpserver
 import tornado.ioloop
-import wsgiref.simple_server
 
 
-class Application(tornado.web.Application):
+class Application(tornado.wsgi.WSGIApplication):
     def __init__(self):
         handlers = [
             (r'/', MainHandler),
             (r'/api', ApiHandler),
             (r'/favicon.ico', tornado.web.StaticFileHandler, {'path': "./"}),
-            ]
+        ]
         settings = {
             "WSServerUrl": "ws://pywsserver.herokuapp.com/ws",
             "template_path": Settings.TEMPLATE_PATH,
             "static_path": Settings.STATIC_PATH,
-            }
+
+            #"ui_modules": {"Entry": EntryModule},
+            #"xsrf_cookies": True,
+        }
         tornado.web.Application.__init__(self, handlers, **settings)
 
 
@@ -41,11 +43,4 @@ class ApiHandler(tornado.web.RequestHandler):
     def post(self):
         pass
 
-tornadoapp = Application()
-
-def application():
-    return tornadoapp
-
-wsgiApp = tornado.wsgi.WSGIAdapter(tornadoapp)
-server = wsgiref.simple_server.make_server('', Settings.HTTPPORT, wsgiApp)
-server.serve_forever()
+application = Application()
