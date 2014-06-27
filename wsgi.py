@@ -2,6 +2,8 @@ import Settings
 
 import tornado.web
 import tornado.wsgi
+import tornado.httpserver
+import tornado.ioloop
 import wsgiref.simple_server
 
 
@@ -39,7 +41,20 @@ class ApiHandler(tornado.web.RequestHandler):
     def post(self):
         pass
 
+def simple_app(environ, start_response):
+    status = "200 OK"
+    response_headers = [("Content-type", "text/plain")]
+    start_response(status, response_headers)
+    return ["Hello world!\n"]
+
+container = tornado.wsgi.WSGIContainer(simple_app)
+http_server = tornado.httpserver.HTTPServer(container)
+http_server.listen(Settings.HTTPPORT)
+tornado.ioloop.IOLoop.instance().start()
+
+"""
 application = Application()
 wsgiApp = tornado.wsgi.WSGIAdapter(application)
 server = wsgiref.simple_server.make_server('', Settings.HTTPPORT, wsgiApp)
 server.serve_forever()
+"""
