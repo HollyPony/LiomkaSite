@@ -39,8 +39,7 @@ class ApiHandler(tornado.web.RequestHandler):
     def post(self):
         pass
 
-if __name__ == "__main__":
-    application = Application()
-    wsgiApp = tornado.wsgi.WSGIAdapter(application)
-    server = wsgiref.simple_server.make_server('', Settings.HTTPPORT, wsgiApp)
-    server.serve_forever()
+application = Application()
+wsgiApp = tornado.wsgi.WSGIAdapter(application)
+server = wsgiref.simple_server.make_server('', Settings.HTTPPORT, wsgiApp)
+server.serve_forever()
