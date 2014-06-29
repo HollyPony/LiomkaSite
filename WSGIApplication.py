@@ -11,7 +11,7 @@ class Application(tornado.wsgi.WSGIApplication):
     def __init__(self):
         handlers = [
             (r'/', IndexHandler),
-            (r'/js', JsWSClient),
+            (r'/demo', JsWSClient),
             (r'/favicon.ico', tornado.web.StaticFileHandler, {'path': "./"}),
             ]
         settings = {
