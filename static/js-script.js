@@ -185,8 +185,10 @@ window.addEventListener("load", function(event) {
                 };
 
                 socket.onclose = function (event) {
-                    userList.empty();
-
+                    if (event.code != 1000)
+                        messageError({content: 'Cannot reach server ' + wsserver});
+                    else if (!event.wasClean)
+                        messageWarning('The connection was not close properly, if you see this message: contact me');
                     disconnected();
                     socket = null;
                 };
