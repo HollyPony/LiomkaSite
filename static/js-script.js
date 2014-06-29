@@ -30,6 +30,17 @@ window.addEventListener("load", function(event) {
         messageEvent('Connected');
     }
 
+    function connecting() {
+        chatLog.prop('disabled', true);
+        userList.prop('disabled', true);
+        remoteServer.prop('disabled', true);
+        userName.prop('disabled', true);
+        userInput.prop('disabled', true);
+        sendTextButton.prop('disabled', true);
+
+        toggleConnectionButton.text('Connecting ...');
+    }
+
     function disconnected() {
         clearInterval(intervalID);
         chatLog.prop('disabled', false);
@@ -65,12 +76,13 @@ window.addEventListener("load", function(event) {
             if (userName.val() == '') {
                 div.removeClass("has-success");
                 div.addClass("has-error");
-
                 return false;
             } else {
                 div.removeClass("has-error");
                 div.addClass("has-success");
             }
+
+            connecting();
 
             try {
                 if (remoteServer.val())
@@ -115,11 +127,13 @@ window.addEventListener("load", function(event) {
                         }
                     } catch (e) {
                         messageWarning(event.data);
+                        console.log(e)
                     }
                 };
 
             } catch (exception) {
-                messageError('Error: ' + exception);
+                console.log('Error: ' + exception);
+                console.log('Serveur: ' + remoteServer.val())
                 disconnected();
                 socket = null;
             }
