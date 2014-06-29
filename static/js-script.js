@@ -168,36 +168,34 @@ window.addEventListener("load", function(event) {
         userInput.val("");
     }
 
-    function createP(content, className) {
-        var p = document.createElement('p');
-        p.appendChild(content);
-        p.className = className;
-        return p;
-    }
-
-    function createSpan(content, className) {
-        var span = document.createElement('span');
-        span.appendChild(content);
-        span.className = className;
-        return span;
-    }
-
     function messageWarning(msg) {
-        appendMessage(createP(document.createTextNode(msg), 'text-warning'));
+        appendMessage($(document.createElement('p')).text(msg).addClass("text-warning"));
     }
 
     function messageEvent(msg) {
-        appendMessage(createP(document.createTextNode(msg), 'text-muted'));
+        appendMessage($(document.createElement('p')).text(msg).addClass("text-muted"));
     }
 
     function messageError(msg) {
-        appendMessage(createP(document.createTextNode(msg), 'text-danger'));
+        appendMessage($(document.createElement('p')).text(msg).addClass("text-danger"));
     }
 
     function messageReceived(msg) {
-        var p = createP(createSpan(document.createTextNode(msg.from.name), 'userName'), 'messageReceived');
-        p.appendChild(document.createTextNode(msg.content));
-        appendMessage(p);
+        // Format the date
+        // multiplied by 1000 so that the argument is in milliseconds, not seconds
+        var date = new Date(msg.time*1000);
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+
+        var formattedTime = hours + ':' + minutes + ':' + seconds;
+
+        // Create the message element
+        appendMessage($(document.createElement('p')).addClass('messageReceived').append(
+            $(document.createElement('span')).addClass('timeMessage').addClass('text-muted').text(formattedTime)).append(
+            $(document.createElement('span')).addClass('userName').addClass('text-info').text(msg.from.name)).append(
+            $(document.createTextNode(msg.content))
+        ));
     }
 
     function appendMessage(blocToAppend) {
