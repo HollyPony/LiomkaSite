@@ -16,7 +16,7 @@ class Application(tornado.wsgi.WSGIApplication):
             ]
         settings = {
             "site_title": "Liomka.IO",
-            "WSServerUrl": "ws://pywsserver.herokuapp.com/ws",
+            "WSServerUrl": Settings.WSSERVER_URI,
             "template_path": Settings.TEMPLATE_PATH,
             "static_path": Settings.STATIC_PATH,
 
@@ -27,8 +27,8 @@ class Application(tornado.wsgi.WSGIApplication):
 
 class IndexHandler(tornado.web.RequestHandler):
     def get(self):
-        self.render("index.html")
+        self.render("index.html", home="")
 
 class JsWSClient(tornado.web.RequestHandler):
     def get(self):
-        self.render("jswsclient.html")
+        self.render("jswsclient.html", js="")
