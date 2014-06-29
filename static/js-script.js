@@ -4,11 +4,19 @@
  * Created by Raymond Barre on 30/04/2014.
  */
 
+var wsserver = null;
+
+// ------------------------------------------------------------------------
+// Get var from html
+// ------------------------------------------------------------------------
+function setWSServer(val) {
+    wsserver = val;
+}
+
 window.addEventListener("load", function(event) {
     var chatLog = $('#chatLog');
     var userList = $('#userList');
     var userInput = $('#userInput');
-    var remoteServer = $('#remoteServer');
     var userName = $('#userName');
     var toggleConnectionButton = $('#toggleConnectionButton');
     var sendTextButton = $('#sendText');
@@ -19,7 +27,6 @@ window.addEventListener("load", function(event) {
         intervalID = setInterval(function(){ping();}, 40000);
         chatLog.prop('disabled', true);
         userList.prop('disabled', true);
-        remoteServer.prop('disabled', true);
         userName.prop('disabled', true);
 
         userInput.prop('disabled', false);
@@ -33,7 +40,6 @@ window.addEventListener("load", function(event) {
     function connecting() {
         chatLog.prop('disabled', true);
         userList.prop('disabled', true);
-        remoteServer.prop('disabled', true);
         userName.prop('disabled', true);
         userInput.prop('disabled', true);
         sendTextButton.prop('disabled', true);
@@ -45,7 +51,6 @@ window.addEventListener("load", function(event) {
         clearInterval(intervalID);
         chatLog.prop('disabled', false);
         userList.prop('disabled', false);
-        remoteServer.prop('disabled', false);
         userName.prop('disabled', false);
 
         userInput.prop('disabled', true);
@@ -85,10 +90,7 @@ window.addEventListener("load", function(event) {
             connecting();
 
             try {
-                if (remoteServer.val())
-                    socket = new WebSocket(remoteServer.val());
-                else
-                    socket = new WebSocket(remoteServer.attr("placeholder"));
+                socket = new WebSocket(wsserver);
 
                 socket.onopen = function (event) {
                     socket.send(JSON.stringify({"hello": {"name": userName.val()}}));
