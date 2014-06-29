@@ -114,18 +114,21 @@ window.addEventListener("load", function(event) {
     // Treat events from WebSockets
     // ------------------------------------------------------------------------
     function userListReceived(users) {
+        messageEvent({content: users.length+ ' people connected', time: users.time});
         users.forEach(function (user) {
             userList.append($(document.createElement('dt')).text(user.name).attr('id', user.id));
         });
     }
 
     function userConnected(user) {
+        messageEvent({content: user.name + ' is connected', time: user.time});
         userList.append($(document.createElement('dt')).text(user.name).attr('id', user.id));
     }
 
     function userDiconnected(user) {
         var element = $('#'+user.id);
         if (element) {
+            messageEvent({content: element.text() + ' is disconnected', time: user.time});
             element.remove();
         }
     }
