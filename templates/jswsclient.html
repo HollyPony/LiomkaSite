@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
+<!-- TODO find a better way -->
+{% block jsPage %} class="active"{% end %}
+
 {% block head %}
 <link href="{{ static_url("js-style.css") }}" rel="stylesheet" media="screen">
 {% end %}
