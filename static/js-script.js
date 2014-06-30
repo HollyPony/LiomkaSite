@@ -133,6 +133,12 @@ window.addEventListener("load", function(event) {
         }
     }
 
+    function userChangeName(user) {
+        var element = $('#'+user.id);
+        messageEvent({content: element.text() + ' as now know as ' + user.name, time: user.time});
+        element.textContent = user.name;
+    }
+
     // ------------------------------------------------------------------------
     // Send actions to WebSockets
     // ------------------------------------------------------------------------
@@ -212,8 +218,7 @@ window.addEventListener("load", function(event) {
                         } else if (msgObj.userDisconnected) {
                             userDiconnected(msgObj.userDisconnected);
                         } else if (msgObj.userChangeName) {
-                            var element = document.getElementById(msgObj.userChangeName.id);
-                            element.textContent = msgObj.userChangeName.name;
+                            userChangeName(msgObj.userChangeName)
                         }
                     } catch (e) {
                         messageWarning({content: 'onMessage error: ' + event.data});
