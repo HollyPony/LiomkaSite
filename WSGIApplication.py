@@ -12,7 +12,8 @@ class Application(tornado.wsgi.WSGIApplication):
         handlers = [
             (r'/', IndexHandler),
             (r'/demo', JsWSClient),
-            (r'/favicon.ico', tornado.web.StaticFileHandler, {'path': "./"}),
+            # (r"/(apple-touch-icon\.png)", tornado.web.StaticFileHandler, dict(path=settings['static_path'])),
+            (r'/favicon.ico', tornado.web.StaticFileHandler, {'path': ""}), # http://www.vectortown.com/
             ]
         settings = {
             "site_title": "Liomka.IO",
