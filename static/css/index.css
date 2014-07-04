@@ -26,6 +26,7 @@
 
 .entry-details {
     overflow: auto;
+    position: relative;
 }
 
 .entry-details-content {
