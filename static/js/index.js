@@ -5,24 +5,23 @@
  */
 
 var entriesDetails = $('.entry-details');
-//entriesDetails.hide();
+$(entriesDetails).find('.panel-body').hide();
 
-
-$(document).ready(function() {
-
-    function isScrolledIntoView(elem)
-    {
-        var docViewTop = $(window).scrollTop();
-        var docViewBottom = docViewTop + $(window).height();
-
-        var elemTop = $(elem).offset().top;
-        var elemBottom = elemTop + $(elem).height();
-
-        return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
-    }
-
-    entriesDetails.each(function (entry) {
-       console.log(entry.id + ": " + $("#"+entry.id).visible());
+function displayPanelBodies () {
+    entriesDetails.each(function (i, entry) {
+        if ($(entry).visible()) {
+            $(entry).find('.panel-body').fadeIn(1000, function () {
+                ;
+            });
+        }
     });
-    //$(this).fadeIn(500);
+}
+
+$(document).ready(function () {
+
+    displayPanelBodies();
+
+    $(window).scroll(function(){
+        displayPanelBodies();
+    })
 });
