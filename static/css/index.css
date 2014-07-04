@@ -1,3 +1,8 @@
+#cv ul {
+    padding-left: 0;
+    list-style: outside none none;
+}
+
 #vertical-line {
     position: absolute;
     height: 100%;
@@ -6,12 +11,6 @@
     background-color: #437adb;
     z-index: 1;
 }
-
-#cv ul {
-    padding-left: 0;
-    list-style: outside none none;
-}
-
 
 .entry-point {
     float: left;
@@ -48,12 +47,6 @@
 
 .entry-details-content > .arrow {
     border-width: 11px;
-}
-.entry-details-content > .arrow:after {
-    content: "";
-    border-width: 10px;
-}
-.entry-details-content.right > .arrow {
     top: 20px;
     left: -11px;
     margin-top: -11px;
@@ -61,7 +54,8 @@
     border-right-color: rgba(0, 0, 0, .25);
     border-left-width: 0;
 }
-.entry-details-content.right > .arrow:after {
+.entry-details-content > .arrow:after {
+    border-width: 10px;
     bottom: -10px;
     left: 2px;
     content: " ";
