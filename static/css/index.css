@@ -8,7 +8,7 @@
     height: 100%;
     width: 0.3em;
     left: 2.3em;
-    background-color: #437adb;
+    background: #437adb;
     z-index: 1;
 }
 
@@ -65,5 +65,8 @@
 }
 
 #jumbotron-custom {
-    border-radius: 0 0 55px 55px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }

@@ -5,6 +5,7 @@
  */
 
 $(function () {
+    /*
     $.stellar({
         responsive: true,
         horizontalScrolling: false,
@@ -12,4 +13,5 @@ $(function () {
         horizontalOffset: 0,
         positionProperty: 'position'
     });
+    */
 });
