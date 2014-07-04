@@ -6,30 +6,19 @@
 
 
 $(document).ready(function () {
-    function displayPanelBodies () {
-        elementsList.each(function (i, entry) {
-            if ($(entry).visible(true)) {
-                $(entry).find('.entry-details').animate({marginLeft: '0%', opacity: '1'}, 'slow', 'easeOutExpo', function() {
-                    $(entry).css('height', 'auto');
-                });
-            }
-        });
-    }
-
     // Init Vars
     var elementsList = $('#cv').find('li');
     var entriesDetails = elementsList.find('.entry-details');
 
     // Init DOM
-    elementsList.each(function (i, entry) {
-        console.log($(entry).height());
-        $(entry).css('height', $(entry).height());
-    });
-    entriesDetails.css({marginLeft: '100%', opacity: '0'});
-    displayPanelBodies();
+    entriesDetails.css({ opacity: '0'});
 
-    // Init Events
-    $(window).scroll(function(){
-        displayPanelBodies();
-    })
+    entriesDetails.waypoint(function(direction) {
+        $(this).css({'visibility':'visible', 'left': '50%'}).stop()
+            .animate({left: '0%', opacity: '1'}, 1000, 'easeOutExpo');
+
+    }, {
+        offset: '80%',
+        triggerOnce: true
+    });
 });
