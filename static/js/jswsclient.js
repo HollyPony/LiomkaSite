@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * Created by Raymond Barre on 30/04/2014.
+ * Created by Liomka on 30/04/2014.
  */
 
 var wsserver = null;
