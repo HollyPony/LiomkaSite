@@ -13,7 +13,7 @@ $(document).ready(function () {
     // Init DOM
     entriesDetails.css({ opacity: '0'});
 
-    entriesDetails.waypoint(function(direction) {
+    entriesDetails.waypoint(function() {
         $(this).css({'visibility':'visible', 'left': '50%'}).stop()
             .animate({left: '0%', opacity: '1'}, 1000, 'easeOutExpo');
 
