@@ -11,7 +11,8 @@ class Application(tornado.wsgi.WSGIApplication):
     def __init__(self):
         handlers = [
             (r'/', IndexHandler),
-            (r'/demo', JsWSClient),
+            (r'/cv', CvHandler),
+            (r'/demo', JsWSClientHandler),
             # (r"/(apple-touch-icon\.png)", tornado.web.StaticFileHandler, dict(path=settings['static_path'])),
             (r'/favicon.ico', tornado.web.StaticFileHandler, {'path': ""}), # http://www.vectortown.com/
             ]
@@ -29,6 +30,10 @@ class IndexHandler(tornado.web.RequestHandler):
     def get(self):
         self.render("index.html")
 
-class JsWSClient(tornado.web.RequestHandler):
+class JsWSClientHandler(tornado.web.RequestHandler):
     def get(self):
         self.render("jswsclient.html", wsserver = Settings.WSSERVER_URI)
+
+class CvHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.render("cv.html")

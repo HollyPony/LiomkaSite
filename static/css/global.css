@@ -10,7 +10,7 @@
 }
 
 #sky {
-    background: linear-gradient(lightskyblue, deepskyblue, black 95%);
+    background: linear-gradient( deepskyblue, black 95%);
     background-size: 100% 100%;
 }
 
@@ -42,7 +42,7 @@
 .panel-custom {
     background-color: rgba(109, 202, 255, 0.85);
     border: 0;
-    border-radius: 6px;
+    border-radius: 6px 6px 0 0;
 }
 
 .panel-custom .panel-body {
@@ -55,8 +55,7 @@
 }
 
 .panel-custom .panel-footer {
-    border-bottom-right-radius: 6px;
-    border-bottom-left-radius: 6px;
+    border-radius: 0;
 }
 
 .panel-custom .panel-heading, .panel-custom .panel-footer {
@@ -65,16 +64,33 @@
 }
 
 /* NAVBAR ----------------------------------------------------------------------------------------------------------- */
-.navbar-inverse {
+.navbar-custom {
     font-family: "Century Gothic",Arial,sans-serif;
     text-transform: uppercase;
     margin-bottom: 0;
     border-radius: 0;
     border: 0;
 }
+.navbar-custom .navbar-nav > li > a,
+.navbar-custom .navbar-brand {
+    color: rgb(255, 255, 255);
+}
+
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus {
+    color: rgb(195, 195, 195);
+}
+
+.navbar-custom .navbar-nav > .active a,
+.navbar-custom .navbar-nav > .active a:hover,
+.navbar-custom .navbar-nav > .active a:focus {
+    color: rgba(0, 167, 255, 0.81);
+    background-color: inherit;
+}
 
 /* JUMBOTRON -------------------------------------------------------------------------------------------------------- */
-.jumbotron-custom {
+.container .jumbotron-custom {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     padding-top: 14px;
@@ -82,10 +98,10 @@
     background-color: rgba(255, 255, 255, 0.3);
 }
 
-.jumbotron-custom h1, .jumbotron-custom h2, .jumbotron-custom h3, .jumbotron-custom h4, .jumbotron-custom h5 {
+.container .jumbotron-custom h1, .jumbotron-custom h2, .jumbotron-custom h3, .jumbotron-custom h4, .jumbotron-custom h5 {
     margin-top: 0;
 }
 
-.jumbotron-custom p {
+.container .jumbotron-custom p {
     margin-bottom: 0;
 }
