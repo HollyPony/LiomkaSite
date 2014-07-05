@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 <!-- TODO find a better way -->
-{% block homePage %} class="active"{% end %}
+{% block homePage %}active{% end %}
 
 {% block head %}
-<link href="{{ static_url("css/index.css") }}" rel="stylesheet" media="screen">
+<link href='{{ static_url("css/index.css") }}' rel="stylesheet" media="screen">
 {% end %}
 
 {% block body %}
@@ -155,7 +155,7 @@
 {% end %}
 
 {% block scripts %}
-<script language="javascript" type="text/javascript" src="{{ static_url("js/libs/jquery-ui-1.9.2.custom.min.js") }}"></script>
-<script language="javascript" type="text/javascript" src="{{ static_url("js/libs/waypoints.min.js") }}"></script>
-<script language="javascript" type="text/javascript" src="{{ static_url("js/index.js") }}"></script>
+<script language="javascript" type="text/javascript" src='{{ static_url("js/libs/jquery-ui-1.9.2.custom.min.js") }}'></script>
+<script language="javascript" type="text/javascript" src='{{ static_url("js/libs/waypoints.min.js") }}'></script>
+<script language="javascript" type="text/javascript" src='{{ static_url("js/index.js") }}'></script>
 {% end %}
