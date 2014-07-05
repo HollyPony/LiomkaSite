@@ -12,9 +12,33 @@ $(document).ready(function () {
     city.css({display: 'block', top: $(document).height() - city.height()});
     sky.css({display: 'block', top: $('.navbar').height(), height: city.position().top});
 
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
         return;
+
+    var animation = false; // --------- If animation is supported
+    /*
+    var    animationstring = 'animation',
+    var    keyframeprefix = '',
+    var    domPrefixes = 'Webkit Moz O ms Khtml'.split(' '),
+    var    pfx  = '';
+    */
+    if( elm.style.animationName !== undefined ) { animation = true; }
+    /*
+    if( animation === false ) {
+        for (var i = 0; i < domPrefixes.length; i++) {
+            if (elm.style[ domPrefixes[i] + 'AnimationName' ] !== undefined) {
+                pfx = domPrefixes[ i ];
+                animationstring = pfx + 'Animation';
+                keyframeprefix = '-' + pfx.toLowerCase() + '-';
+                animation = true;
+                break;
+            }
+        }
     }
+    */
+
+    if (!animation)
+        return;
 
     function rand(max, min) {
         min = typeof min !== 'undefined' ? min: 0;
