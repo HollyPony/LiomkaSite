@@ -4,7 +4,7 @@
 {% block jsPage %}active{% end %}
 
 {% block head %}
-<link href="{{ static_url("css/jswsclient.css") }}" rel="stylesheet" media="screen">
+<link href='{{ static_url("css/jswsclient.css") }}' rel="stylesheet" media="screen">
 {% end %}
 
 {% block body %}
@@ -74,6 +74,6 @@
 {% end %}
 
 {% block scripts %}
-<script language="javascript" type="text/javascript" src="{{ static_url("js/jswsclient.js") }}"></script>
+<script language="javascript" type="text/javascript" src='{{ static_url("js/jswsclient.js") }}'></script>
 <script type="application/javascript">setWSServer("{{wsserver}}");</script>
 {% end %}
