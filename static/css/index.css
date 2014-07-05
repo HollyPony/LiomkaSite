@@ -63,10 +63,17 @@
     border-right-color: #F5F5F5;
     border-left-width: 0;
 }
-
 #jumbotron-custom {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+#jumbotron-custom h2 {
+    margin-top: 0;
+}
+
+#jumbotron-custom p {
+    margin-bottom: 0;
 }
