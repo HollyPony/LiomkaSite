@@ -10,7 +10,7 @@
 }
 
 #sky {
-    background: linear-gradient(lightskyblue, deepskyblue, black);
+    background: linear-gradient(lightskyblue, deepskyblue, black 95%);
     background-size: 100% 100%;
 }
 
@@ -37,11 +37,55 @@
     0% { background-position: -50% 0; }
     100%   { background-position: 150% 0; }
 }
+/* -------------------------------------------------------------------------------------------------- Custom Bosstrap */
+/* PANEL ------------------------------------------------------------------------------------------------------------ */
+.panel-custom {
+    background-color: rgba(109, 202, 255, 0.85);
+    border: 0;
+    border-radius: 6px;
+}
 
+.panel-custom .panel-body {
+    border: 1px rgba(255, 0, 255, 0.20) solid;
+}
+
+.panel-custom .panel-heading {
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+}
+
+.panel-custom .panel-footer {
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.panel-custom .panel-heading, .panel-custom .panel-footer {
+    background: none repeat scroll 0 0 rgba(255, 0, 255, 0.20);
+    border: 0;
+}
+
+/* NAVBAR ----------------------------------------------------------------------------------------------------------- */
 .navbar-inverse {
     font-family: "Century Gothic",Arial,sans-serif;
     text-transform: uppercase;
     margin-bottom: 0;
     border-radius: 0;
     border: 0;
+}
+
+/* JUMBOTRON -------------------------------------------------------------------------------------------------------- */
+.jumbotron-custom {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.jumbotron-custom h1, .jumbotron-custom h2, .jumbotron-custom h3, .jumbotron-custom h4, .jumbotron-custom h5 {
+    margin-top: 0;
+}
+
+.jumbotron-custom p {
+    margin-bottom: 0;
 }

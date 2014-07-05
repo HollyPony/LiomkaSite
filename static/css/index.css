@@ -3,6 +3,7 @@
     list-style: outside none none;
 }
 
+/* ------------------------------------- Vertical line ------------------------------------- */
 #vertical-line {
     position: absolute;
     height: 100%;
@@ -24,6 +25,7 @@
 
 }
 
+/* ------------------------------------- Entries content ------------------------------------- */
 .entry-details {
     overflow: auto;
     position: relative;
@@ -37,6 +39,7 @@
     position: relative;
 }
 
+/* ------------------------------------- Customize arrow ------------------------------------- */
 .entry-details-content > .arrow,
 .entry-details-content > .arrow:after {
     position: absolute;
@@ -47,33 +50,18 @@
 }
 
 .entry-details-content > .arrow {
-    border-width: 11px;
+    border-width: 10px 10px 10px 0;
     top: 20px;
-    left: -11px;
-    margin-top: -11px;
-    border-right-color: #999;
-    border-right-color: rgba(0, 0, 0, .25);
-    border-left-width: 0;
+    left: -10px;
+    margin-top: -10px;
+    border-right-color: rgba(109, 202, 255, 0.85);
 }
 .entry-details-content > .arrow:after {
+
     border-width: 10px;
     bottom: -10px;
-    left: 2px;
     content: " ";
-    border-right-color: #F5F5F5;
+    border-right-color: rgba(255, 0, 255, 0.20);
+    /*border-right-color: #F5F5F5;*/
     border-left-width: 0;
-}
-#jumbotron-custom {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    padding-top: 14px;
-    padding-bottom: 14px;
-}
-
-#jumbotron-custom h2 {
-    margin-top: 0;
-}
-
-#jumbotron-custom p {
-    margin-bottom: 0;
 }

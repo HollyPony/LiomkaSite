@@ -1,25 +1,12 @@
-.enable-mobile-form-inline{
-    display: inline-block;
-    width: auto;
-    vertical-align: middle;
-}
-
-#navbarHead {
-    margin-bottom: 0;
-}
-
-#title {
-    margin-top: 0;
-}
-
 #chatLog {
-    height: 240px;
+    height: 20em;
 }
 
 #chatLog, #userList {
     overflow: auto;
 }
 
+/* TODO Set size for userList */
 #userList {
     right: 0;
     left: auto;
