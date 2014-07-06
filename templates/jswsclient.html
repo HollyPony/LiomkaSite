@@ -29,8 +29,7 @@
         <!-- Chat -->
         <div class="panel-body">
             <div class="btn-group pull-right">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-align-justify"></button>
-                <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-align-justify"></a>-->
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-align-justify"></span></button>
                 <dl id="userList" class="dropdown-menu" role="menu"></dl>
             </div>
             <div id="chatLog">
@@ -74,6 +73,6 @@
 {% end %}
 
 {% block scripts %}
-<script language="javascript" type="text/javascript" src='{{ static_url("js/jswsclient.js") }}'></script>
+<script type="text/javascript" src='{{ static_url("js/jswsclient.js") }}'></script>
 <script type="application/javascript">setWSServer("{{wsserver}}");</script>
 {% end %}

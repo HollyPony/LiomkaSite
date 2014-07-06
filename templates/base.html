@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge'><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <title>{{ handler.settings["site_title"] }}</title>
@@ -70,12 +70,12 @@
         </nav>
     </div>
 
-    <script language="javascript" type="text/javascript" src='{{ static_url("js/libs/jquery-2.1.1.min.js") }}'></script>
-    <script language="javascript" type="text/javascript" src='{{ static_url("js/libs/jquery.stellar.min.js") }}'></script>
-    <script language="javascript" type="text/javascript" src='{{ static_url("js/libs/bootstrap.min.js") }}'></script>
-    <script language="javascript" type="text/javascript" src='{{ static_url("js/libs/jquery-ui-1.9.2.custom.min.js") }}'></script>
-    <script language="javascript" type="text/javascript" src='{{ static_url("js/libs/waypoints.min.js") }}'></script>
-    <script language="javascript" type="text/javascript" src='{{ static_url("js/global.js") }}'></script>
+    <script type="text/javascript" src='{{ static_url("js/libs/jquery-2.1.1.min.js") }}'></script>
+    <script type="text/javascript" src='{{ static_url("js/libs/jquery.stellar.min.js") }}'></script>
+    <script type="text/javascript" src='{{ static_url("js/libs/bootstrap.min.js") }}'></script>
+    <script type="text/javascript" src='{{ static_url("js/libs/jquery-ui-1.9.2.custom.min.js") }}'></script>
+    <script type="text/javascript" src='{{ static_url("js/libs/waypoints.min.js") }}'></script>
+    <script type="text/javascript" src='{{ static_url("js/global.js") }}'></script>
     {% block scripts %}{% end %}
 
     <div id="sky" class="background"></div>
