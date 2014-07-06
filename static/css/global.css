@@ -28,10 +28,19 @@ body {
 }
 
 #city {
-    background: url("/static/city.png");
+    background: #3B3E48 url("/static/city.png") no-repeat fixed;
     background-size: cover;
-    height: 1000px;
-    bottom: 0;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    display: block;
+}
+
+@media (max-width: 991px) {
+    #city {
+        background: none;
+        display: none;
+    }
 }
 
 /* -------------------------------------------------------------------------------------------------- Core components */
