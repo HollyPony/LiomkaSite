@@ -18,7 +18,6 @@ $.support.animation = (function(){
 
 $(document).ready(function () {
 
-    var sky = $('#sky');
     var city = $('#city');
 
 
@@ -30,7 +29,6 @@ $(document).ready(function () {
     }
 
     city.attr('data-stellar-background-ratio', '0.35');
-    sky.css({display: 'block', top: 0, height: city.position().top});
 
     /*
     function rand(max, min) {
@@ -38,7 +36,6 @@ $(document).ready(function () {
         return Math.floor(Math.random() * (max - min) + min);
     }
 
-    var body = $('body');
     if (city.position().top > 0) {
         for (var i = 0; i < Math.floor((Math.random() * 23) + 4); ++i) {
             var animationDuration, chancetoHaveOne, zIndex, delay;
