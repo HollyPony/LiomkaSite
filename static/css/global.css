@@ -8,12 +8,6 @@ body {
     position: relative;
 }
 
-.background {
-    display: none;
-    width: 100%;
-    position: absolute;
-}
-
 .palatino-font {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
@@ -25,6 +19,9 @@ body {
 
 #sky {
     background-size: 100% 100%;
+    display: none;
+    width: 100%;
+    position: absolute;
 }
 
 #city {

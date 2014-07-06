@@ -21,8 +21,6 @@ $(document).ready(function () {
     var sky = $('#sky');
     var city = $('#city');
 
-    city.css({display: 'block', top: $(document).height() - city.height()});
-    sky.css({display: 'block', top: 0, height: city.position().top});
 
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
         return;
@@ -31,6 +29,10 @@ $(document).ready(function () {
         return;
     }
 
+    city.attr('data-stellar-background-ratio', '0.35');
+    sky.css({display: 'block', top: 0, height: city.position().top});
+
+    /*
     function rand(max, min) {
         min = typeof min !== 'undefined' ? min: 0;
         return Math.floor(Math.random() * (max - min) + min);
@@ -58,12 +60,13 @@ $(document).ready(function () {
                     })
             );
         }
-    }
+    }*/
 
     $.stellar({
-        /*responsive: true,*/
+        responsive: true,
         horizontalScrolling: false,
-        verticalOffset: city.position().top
+        //verticalOffset: city.position().top,
+        verticalOffset: -($(document).height() - $(window).height() - 50)
         /*positionProperty: 'position'*/
     });
 });

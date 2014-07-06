@@ -12,6 +12,8 @@
     {% block head %}{% end %}
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
+    <div id="sky" class="background"></div>
+    <div id="city"></div>
     <div class="main">
         <nav class="navbar navbar-inverse navbar-custom" role="navigation">
             <div class="container">
@@ -77,8 +79,5 @@
     <script type="text/javascript" src='{{ static_url("js/libs/waypoints.min.js") }}'></script>
     <script type="text/javascript" src='{{ static_url("js/global.js") }}'></script>
     {% block scripts %}{% end %}
-
-    <div id="sky" class="background"></div>
-    <div id="city" class="background" data-stellar-offset-parent="true"></div>
 </body>
 </html>
