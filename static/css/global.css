@@ -1,3 +1,7 @@
+body {
+    background: #3B3E48;
+}
+
 .main {
     z-index: 100;
     position: relative;
@@ -10,14 +14,13 @@
 }
 
 #sky {
-    background: linear-gradient( deepskyblue, black 95%);
     background-size: 100% 100%;
 }
 
 #city {
-    background: url("/static/city.jpg");
+    background: url("/static/city.png");
     background-size: cover;
-    height: 428px;
+    height: 1000px;
     bottom: 0;
 }
 
@@ -30,13 +33,24 @@
     background: url('/static/cloud.png') no-repeat -50% 0;
 
     animation: animateCloud 3s linear 0s infinite;
+    -webkit-animation: animateCloud 3s linear 0s infinite;
+    -moz-animation: animateCloud 3s linear 0s infinite;
+    -ms-animation: animateCloud 3s linear 0s infinite;
+    -o-animation: animateCloud 3s linear 0s infinite;
+
     animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -ms-animation-play-state: paused;
+    -o-animation-play-state: paused;
 }
 
-@keyframes animateCloud {
-    0% { background-position: -50% 0; }
-    100%   { background-position: 150% 0; }
-}
+@keyframes animateCloud {0% { background-position: -50% 0; } 100% { background-position: 150% 0; }}
+@-webkit-keyframes animateCloud {0% { background-position: -50% 0; } 100% { background-position: 150% 0; }}
+@-moz-keyframes animateCloud {0% { background-position: -50% 0; } 100% { background-position: 150% 0; }}
+@-ms-keyframes animateCloud {0% { background-position: -50% 0; } 100% { background-position: 150% 0; }}
+@-o-keyframes animateCloud {0% { background-position: -50% 0; } 100% { background-position: 150% 0; }}
+
 /* -------------------------------------------------------------------------------------------------- Custom Bosstrap */
 /* PANEL ------------------------------------------------------------------------------------------------------------ */
 .panel-custom {
