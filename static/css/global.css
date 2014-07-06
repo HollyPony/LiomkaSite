@@ -40,28 +40,6 @@ body {
     }
 }
 
-/* -------------------------------------------------------------------------------------------------- Core components */
-a:focus {
-    outline: 0;
-}
-
-.ul-custom {
-    padding-left: 0;
-    list-style: outside none none;
-}
-
-.ul-custom ul li:before {
-    content: '- ';
-}
-.ul-custom ul {
-    padding-left: 1.4em;
-    list-style: outside none;
-}
-
-.ul-custom .list-title {
-    font-weight:bold;
-}
-
 /* -------------------------------------------------------------------------------------------------- Cloud animation */
 .cloud {
     position: fixed;
@@ -213,4 +191,26 @@ a:focus {
 
 .container .jumbotron-custom p {
     margin-bottom: 0;
+}
+
+/* -------------------------------------------------------------------------------------------------- Core components */
+a:focus {
+    outline: 0;
+}
+
+.ul-custom {
+    padding-left: 0;
+    list-style: outside none none;
+}
+
+.ul-custom ul li:before {
+    content: '- ';
+}
+.ul-custom ul {
+    padding-left: 1.4em;
+    list-style: outside none;
+}
+
+.ul-custom .list-title {
+    font-weight:bold;
 }
