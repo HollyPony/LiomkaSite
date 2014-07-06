@@ -1,5 +1,6 @@
 body {
     background: #3B3E48;
+    overflow-x: hidden;
 }
 
 .main {
