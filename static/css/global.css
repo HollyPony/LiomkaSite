@@ -93,7 +93,7 @@ a:focus {
 .panel-custom .panel-body h4,
 .panel-custom .panel-body h5 {
     position: relative;
-    padding-top: 1em;
+    padding-top: 0.8em;
     color: rgb(111, 84, 153);
 }
 
@@ -104,8 +104,8 @@ a:focus {
 .panel-custom .panel-body h5 span {
     display: inline-block;
     position: relative;
-    margin-left: 2em;
-    padding-left: 0.2em;
+    margin-left: 0em;
+    padding-left: 0.3em;
 }
 
 .panel-custom .panel-body h1 span:before,
@@ -120,7 +120,7 @@ a:focus {
 .panel-custom .panel-body h5 span:after {
     content: '';
     display: block;
-    width: 2em;
+    width: 0.8em;
     right: 100%;
     position: absolute;
     border-top: 1px solid black;
