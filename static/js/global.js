@@ -7,22 +7,13 @@
 $.support.transition = (function(){
     var thisBody = document.body || document.documentElement,
         thisStyle = thisBody.style;
-    return thisStyle.transition !== undefined
-        || thisStyle.WebkitTransition !== undefined
-        || thisStyle.MozTransition !== undefined
-        || thisStyle.msTransition !== undefined
-        || thisStyle.OTransition !== undefined;
+    return thisStyle.transition !== undefined;
 })();
 
 $.support.animation = (function(){
     var thisBody = document.body || document.documentElement,
         thisStyle = thisBody.style;
-    return thisStyle.animation !== undefined
-        || thisStyle.WebkitAnimation !== undefined
-        || thisStyle.MozAnimation !== undefined
-        || thisStyle.msAnimation !== undefined
-        || thisStyle.KhtmlAnimation !== undefined
-        || thisStyle.OAnimation !== undefined;
+    return thisStyle.animation !== undefined;
 })();
 
 $(document).ready(function () {
