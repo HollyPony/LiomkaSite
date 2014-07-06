@@ -18,9 +18,6 @@ $.support.animation = (function(){
 
 $(document).ready(function () {
 
-    var city = $('#city');
-
-
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
         return;
 
@@ -28,7 +25,7 @@ $(document).ready(function () {
         return;
     }
 
-    city.attr('data-stellar-background-ratio', '0.35');
+    var city = $('#city');
 
     /*
     function rand(max, min) {
