@@ -16,8 +16,12 @@ $.support.animation = (function(){
     return thisStyle.animation !== undefined;
 })();
 
-$(document).ready(function () {
+function rand(max, min) {
+    min = typeof min !== 'undefined' ? min: 0;
+    return Math.floor(Math.random() * (max - min) + min);
+}
 
+$(document).ready(function () {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
         return;
 
@@ -28,10 +32,6 @@ $(document).ready(function () {
     var city = $('#city');
 
     /*
-    function rand(max, min) {
-        min = typeof min !== 'undefined' ? min: 0;
-        return Math.floor(Math.random() * (max - min) + min);
-    }
 
     if (city.position().top > 0) {
         for (var i = 0; i < Math.floor((Math.random() * 23) + 4); ++i) {
