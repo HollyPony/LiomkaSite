@@ -34,6 +34,10 @@ body {
 }
 
 /* -------------------------------------------------------------------------------------------------- Core components */
+a:focus {
+    outline: 0;
+}
+
 .ul-custom {
     padding-left: 0;
     list-style: outside none none;

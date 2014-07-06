@@ -8,15 +8,17 @@
     color: #d2d2d2;
 }
 
-.affix-custom .active > a:before {
+.affix-custom a:before {
     content: '> ';
+    color: transparent;
 }
 
+.affix-custom .active > a:before,
 .affix-custom a {
     color: white;
 }
 
-.affix-custom a:hover {
+.affix-custom a:hover, .affix-custom a:focus {
     color: rgb(111, 84, 153);
 }
 
