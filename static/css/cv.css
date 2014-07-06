@@ -54,14 +54,13 @@
     top: 20px;
     left: -10px;
     margin-top: -10px;
-    border-right-color: rgba(109, 202, 255, 0.85);
+    border-right-color: #6F5499;
 }
 .entry-details-content > .arrow:after {
-
     border-width: 10px;
     bottom: -10px;
     content: " ";
-    border-right-color: rgba(255, 0, 255, 0.20);
+    border-right-color: #6F5499;
     /*border-right-color: #F5F5F5;*/
     border-left-width: 0;
 }
