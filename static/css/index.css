@@ -22,6 +22,7 @@
     color: rgb(111, 84, 153);
 }
 
+/* Used for collapse submenu
 .affix-custom li ul {
     display: none;
 }
@@ -29,6 +30,7 @@
 .affix-custom .active ul {
     display: block;
 }
+*/
 
 .affix-custom li ul li {
     padding-left: 1.5em;
