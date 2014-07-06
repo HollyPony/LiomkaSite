@@ -1,1 +1,46 @@
+.affix-custom {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: rgb(111, 84, 153);
+}
 
+.affix-custom a small {
+    color: #d2d2d2;
+}
+
+.affix-custom .active > a:before {
+    content: '> ';
+}
+
+.affix-custom a {
+    color: white;
+}
+
+.affix-custom a:hover {
+    color: rgb(111, 84, 153);
+}
+
+.affix-custom li ul {
+    display: none;
+}
+
+.affix-custom .active ul {
+    display: block;
+}
+
+.affix-custom li ul li {
+    padding-left: 1.5em;
+}
+
+.affix-custom.affix-bottom,
+.affix-custom.affix {
+    width: auto;
+}
+.affix-custom.affix {
+    position: fixed;
+    top: 20px;
+}
+
+.affix-custom.affix-bottom {
+    position: absolute;
+}

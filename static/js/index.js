@@ -6,19 +6,27 @@
 
 
 $(document).ready(function () {
-    // Init Vars
-    var elementsList = $('#cv').find('li');
-    var entriesDetails = elementsList.find('.entry-details');
+    var projects = $('.project');
+    var navigator = $('#navigator');
 
-    // Init DOM
-    entriesDetails.css({ opacity: '0'});
+    navigator.css({width: navigator.width()});
 
-    entriesDetails.waypoint(function() {
-        $(this).css({'visibility':'visible', 'left': '50%'}).stop()
-            .animate({left: '0%', opacity: '1'}, 1000, 'easeOutExpo');
+    //entriesDetails.css({ opacity: '0'});
 
+    projects.waypoint(function(direction) {
+
+        var project = $(this).attr('id');
+        //console.log(project + ' -- ' + direction);
+        var selected = navigator.find("a[href='#"+ project +"']").parent();
+
+        navigator.find('.active').removeClass('active');
+
+        selected.addClass('active');
+        if (selected.parent().parent().parent().is('ul'))
+            selected.parent().parent().parent().addClass('active');
     }, {
-        offset: '80%',
-        triggerOnce: true
+        //offset: function() {
+        //    return -$(this).height();
+        //}
     });
 });
