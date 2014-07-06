@@ -48,10 +48,12 @@ $(document).ready(function () {
             delay = rand(15000);
 
             city.prepend($(document.createElement('div')).addClass('cloud')
-                    .css({animationDuration: animationDuration, zIndex: zIndex})
+                    .css({animationDuration: animationDuration, zIndex: zIndex, display: 'none', opacity: 0, backgroundPosition: '40% initial'})
                     .attr({'data-stellar-ratio': chancetoHaveOne})
                     .delay(delay).queue(function (next) {
                         $(this).css({animationPlayState: 'running'});
+                        $(this).css({animationPlayState: 'running', display: 'block'});
+                        $(this).animate({opacity: 1}, 1000);
                         next();
                     })
             );
@@ -61,7 +63,7 @@ $(document).ready(function () {
     $.stellar({
         /*responsive: true,*/
         horizontalScrolling: false,
-        verticalOffset: city.position().top,
+        verticalOffset: city.position().top
         /*positionProperty: 'position'*/
     });
 });
