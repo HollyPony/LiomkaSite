@@ -44,3 +44,9 @@
 .affix-custom.affix-bottom {
     position: absolute;
 }
+
+@media (max-width: 991px) {
+    .affix-custom {
+        display: none;
+    }
+}
