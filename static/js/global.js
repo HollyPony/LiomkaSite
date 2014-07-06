@@ -59,8 +59,6 @@ $(document).ready(function () {
     $.stellar({
         responsive: true,
         horizontalScrolling: false,
-        //verticalOffset: city.position().top,
         verticalOffset: -($(document).height() - $(window).height() - 50)
-        /*positionProperty: 'position'*/
     });
 });
