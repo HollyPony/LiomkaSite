@@ -1,43 +1,44 @@
-.affix-custom {
+#scrollspy {
     padding-top: 1em;
     padding-bottom: 1em;
     background-color: rgb(111, 84, 153);
 }
 
-.affix-custom a small {
+#scrollspy a small {
     color: #d2d2d2;
 }
 
-.affix-custom a:before {
+#scrollspy a:before {
     content: '> ';
     color: transparent;
 }
 
-.affix-custom .active > a:before,
-.affix-custom a {
+#scrollspy .active > a:before,
+#scrollspy a {
     color: white;
 }
 
-.affix-custom a:hover, .affix-custom a:focus {
+#scrollspy a:hover,
+#scrollspy a:focus {
     color: rgb(111, 84, 153);
 }
 
 /* Used for collapse submenu
-.affix-custom li ul {
+#scrollspy li ul {
     display: none;
 }
 
-.affix-custom .active ul {
+#scrollspy .active ul {
     display: block;
 }
 */
 
-.affix-custom li ul li {
+#scrollspy li ul li {
     padding-left: 1.5em;
 }
 
 @media (max-width: 991px) {
-    .affix-custom {
+    #scrollspy {
         display: none;
     }
 }
