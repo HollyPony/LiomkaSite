@@ -64,3 +64,13 @@
     /*border-right-color: #F5F5F5;*/
     border-left-width: 0;
 }
+
+@media (max-width: 991px) {
+    .affix-custom,
+    .affix-custom.affix,
+    .affix-custom.affix-bottom {
+        position: initial !important;
+        width: initial !important;
+        padding-bottom: initial !important;
+    }
+}

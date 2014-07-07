@@ -25,9 +25,8 @@ $(document).ready(function () {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
         return;
 
-    if ($.support.animation === undefined) {
+    if ($.support.animation === undefined)
         return;
-    }
 
     var windowHeight = $(document).height();
     var city = $('#city');
@@ -42,7 +41,6 @@ $(document).ready(function () {
     }
 
     $(window).resize(function(){
-        console.log('triggered');
         updateStellarElement();
     });
 

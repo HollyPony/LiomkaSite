@@ -36,19 +36,6 @@
     padding-left: 1.5em;
 }
 
-.affix-custom.affix-bottom,
-.affix-custom.affix {
-    width: auto;
-}
-.affix-custom.affix {
-    position: fixed;
-    top: 20px;
-}
-
-.affix-custom.affix-bottom {
-    position: absolute;
-}
-
 @media (max-width: 991px) {
     .affix-custom {
         display: none;

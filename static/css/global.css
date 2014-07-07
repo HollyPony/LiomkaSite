@@ -57,6 +57,21 @@ body {
 @keyframes animateCloud {0% { background-position: -50% 0; } 100% { background-position: 150% 0; }}
 
 /* -------------------------------------------------------------------------------------------------- Custom Bosstrap */
+/* AFFIX ------------------------------------------------------------------------------------------------------------ */
+.affix-custom.affix-bottom,
+.affix-custom.affix {
+    width: auto;
+}
+
+.affix-custom.affix {
+    position: fixed;
+    top: 20px;
+}
+
+.affix-custom.affix-bottom {
+    position: absolute;
+}
+
 /* PANEL ------------------------------------------------------------------------------------------------------------ */
 .panel-custom {
     background: transparent;
