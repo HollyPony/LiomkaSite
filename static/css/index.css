@@ -1,3 +1,17 @@
+.project > .panel-footer .century-upper-font span {
+    font-size: 1.1em;
+}
+
+.project > .panel-footer .century-upper-font span:before {
+    content: '#';
+    color: #80ff00;
+}
+
+.project > .panel-footer .century-upper-font span:after {
+    content: ' ';
+}
+
+/* Affix ------------------------------------------------------------------------------------------------------------ */
 #scrollspy {
     padding-top: 1em;
     padding-bottom: 1em;
