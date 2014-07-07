@@ -29,7 +29,22 @@ $(document).ready(function () {
         return;
     }
 
+    var windowHeight = $(document).height();
     var city = $('#city');
+    var ratio = city.attr('data-stellar-ratio');
+
+    function updateStellarElement() {
+        $(window).data('plugin_stellar').destroy();
+
+        var newPosition = (windowHeight - $(window).height()) * ratio;
+        city.css({top: newPosition}).animate({opacity: 1}, 1000);
+        $(window).data('plugin_stellar').init();
+    }
+
+    $(window).resize(function(){
+        console.log('triggered');
+        updateStellarElement();
+    });
 
     /*
     var nbClouds = rand(10, 4);
@@ -57,8 +72,8 @@ $(document).ready(function () {
     */
 
     $.stellar({
-        responsive: true,
-        horizontalScrolling: false,
-        verticalOffset: -($(document).height() - $(window).height() - 50)
+        horizontalScrolling: false
     });
+
+    updateStellarElement();
 });

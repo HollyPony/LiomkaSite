@@ -25,12 +25,13 @@ body {
 }
 
 #city {
-    background: #3B3E48 url("/static/city.png") no-repeat fixed;
-    background-size: cover;
-    height: 100%;
+    background: #3B3E48 url("/static/city.png") no-repeat center bottom;
+    background-size: 100% 100%;
     width: 100%;
+    height: 100%;
     position: fixed;
     display: block;
+    opacity: 0;
 }
 
 @media (max-width: 991px) {
