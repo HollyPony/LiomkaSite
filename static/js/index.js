@@ -4,8 +4,10 @@
  * Created by liomka on 03/07/2014.
  */
 
-
 $(document).ready(function () {
-    var navigator = $('#scrollspy');
-    navigator.css({width: navigator.width()});
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+        return;
+
+    var scrollspy = $('#scrollspy');
+    scrollspy.css({width: scrollspy.width()});
 });
