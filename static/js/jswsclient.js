@@ -13,7 +13,7 @@ function setWSServer(val) {
     wsserver = val;
 }
 
-window.addEventListener("load", function(event) {
+$(window).ready(function () {
     var chatLog = $('#chatLog');
     var userList = $('#userList');
     var userInput = $('#userInput');
@@ -24,6 +24,21 @@ window.addEventListener("load", function(event) {
     var intervalID = null;
     var socket = null;
 
+    var initialTitle = document.title;
+    var window_has_focus;
+    var nbMissedMessage = 0;
+
+    // -----------------------------------------------------------------------------------------------------------------
+    // Listen from window
+    // -----------------------------------------------------------------------------------------------------------------
+    $(window).focus(function() {
+        window_has_focus = true;
+        document.title = initialTitle;
+        nbMissedMessage = 0;
+    }).blur(function() {
+        window_has_focus = false;
+    });
+
     // ------------------------------------------------------------------------
     // Functions for dom
     // ------------------------------------------------------------------------
@@ -31,7 +46,6 @@ window.addEventListener("load", function(event) {
         chatLog.prop('disabled', false);
         userList.prop('disabled', false);
         userName.prop('disabled', false);
-
         userInput.prop('disabled', true);
         sendTextButton.prop('disabled', true);
 
@@ -86,17 +100,16 @@ window.addEventListener("load", function(event) {
             $(document.createElement('span')).addClass('userName').addClass('text-info').text(msg.from.name)).append(
             $(document.createTextNode(msg.content))
         ), 'messageReceived', msg.time);
+
+        if (!window_has_focus)
+            document.title = '(' + ++nbMissedMessage + ') ' +initialTitle;
     }
 
     function appendMessage(blocToAppend, messageType, time) {
         // Format the date
         // multiplied by 1000 so that the argument is in milliseconds, not seconds
-        var date = null;
-        if (time) {
-            date = new Date(time * 1000);
-        } else {
-            date = new Date();
-        }
+        var date = (time) ? new Date(time * 1000) : new Date();
+
         var hours = date.getHours();
         var minutes = date.getMinutes();
         var seconds = date.getSeconds();
