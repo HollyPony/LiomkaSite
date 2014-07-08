@@ -79,6 +79,7 @@ $(window).ready(function () {
     function disconnected() {
         initComponents();
         clearInterval(intervalID);
+        userList.empty();
         messageEvent({content: 'Disconnected'});
     }
 
@@ -232,7 +233,7 @@ $(window).ready(function () {
                             userDiconnected(msgObj.userDisconnected);
                         else if (msgObj.userChangeName)
                             userChangeName(msgObj.userChangeName)
-                        
+
                     } catch (e) {
                         messageWarning({content: 'onMessage error: ' + event.data});
                         console.log(e)
