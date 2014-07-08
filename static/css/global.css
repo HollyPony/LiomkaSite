@@ -1,5 +1,5 @@
 body {
-    background: #3B3E48;
+    background: #3B3E48 linear-gradient(#3B3E48 0%, #696969 80%);
     overflow-x: hidden;
 }
 
@@ -25,7 +25,8 @@ body {
 }
 
 #city {
-    background: #3B3E48 url("/static/city.png") no-repeat center bottom;
+    border: 0;
+    background: transparent url("/static/city.png") no-repeat center bottom;
     background-size: 100% 100%;
     width: 100%;
     height: 100%;
