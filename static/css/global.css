@@ -87,61 +87,6 @@ body {
     color: #d2d2d2;
 }
 
-.panel-custom .panel-body h1,
-.panel-custom .panel-body h2,
-.panel-custom .panel-body h3,
-.panel-custom .panel-body h4,
-.panel-custom .panel-body h5 {
-    position: relative;
-    padding-top: 0.8em;
-    color: rgb(111, 84, 153);
-}
-
-.panel-custom .panel-body h1 span,
-.panel-custom .panel-body h2 span,
-.panel-custom .panel-body h3 span,
-.panel-custom .panel-body h4 span,
-.panel-custom .panel-body h5 span {
-    display: inline-block;
-    position: relative;
-    margin-left: 0em;
-    padding-left: 0.3em;
-}
-
-.panel-custom .panel-body h1 span:before,
-.panel-custom .panel-body h2 span:before,
-.panel-custom .panel-body h3 span:before,
-.panel-custom .panel-body h4 span:before,
-.panel-custom .panel-body h5 span:before,
-.panel-custom .panel-body h1 span:after,
-.panel-custom .panel-body h2 span:after,
-.panel-custom .panel-body h3 span:after,
-.panel-custom .panel-body h4 span:after,
-.panel-custom .panel-body h5 span:after {
-    content: '';
-    display: block;
-    width: 0.8em;
-    right: 100%;
-    position: absolute;
-    border-top: 1px solid black;
-}
-
-.panel-custom .panel-body h1 span:before,
-.panel-custom .panel-body h2 span:before,
-.panel-custom .panel-body h3 span:before,
-.panel-custom .panel-body h4 span:before,
-.panel-custom .panel-body h5 span:before {
-    top: 0.5em;
-}
-
-.panel-custom .panel-body h1 span:after,
-.panel-custom .panel-body h2 span:after,
-.panel-custom .panel-body h3 span:after,
-.panel-custom .panel-body h4 span:after,
-.panel-custom .panel-body h5 span:after {
-    top: 0.65em;
-}
-
 .panel-custom .panel-body a {
     color: #c37600;
 }

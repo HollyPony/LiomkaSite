@@ -11,6 +11,52 @@
     content: ' ';
 }
 
+.subpanel-title h1,
+.subpanel-title h2,
+.subpanel-title h3,
+.subpanel-title h4,
+.subpanel-title h5 {
+    display: inline-block;
+    margin-left: 0;
+    padding-left: 0.3em;
+    position: relative;
+    color: rgb(111, 84, 153);
+}
+
+.subpanel-title h1:before,
+.subpanel-title h2:before,
+.subpanel-title h3:before,
+.subpanel-title h4:before,
+.subpanel-title h5:before,
+.subpanel-title h1:after,
+.subpanel-title h2:after,
+.subpanel-title h3:after,
+.subpanel-title h4:after,
+.subpanel-title h5:after {
+    content: '';
+    display: block;
+    width: 0.8em;
+    right: 100%;
+    position: absolute;
+    border-top: 1px solid black;
+}
+
+.subpanel-title h1:before,
+.subpanel-title h2:before,
+.subpanel-title h3:before,
+.subpanel-title h4:before,
+.subpanel-title h5:before {
+    top: 0.5em;
+}
+
+.subpanel-title h1:after,
+.subpanel-title h2:after,
+.subpanel-title h3:after,
+.subpanel-title h4:after,
+.subpanel-title h5:after {
+    top: 0.65em;
+}
+
 /* Affix ------------------------------------------------------------------------------------------------------------ */
 #scrollspy {
     padding-top: 1em;
