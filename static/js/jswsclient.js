@@ -218,21 +218,21 @@ $(window).ready(function () {
                 socket.onmessage = function (event) {
                     try {
                         var msgObj = JSON.parse(event.data);
-                        if (msgObj.accepted) {
+                        if (msgObj.accepted)
                             connected(msgObj.accepted.time);
-                        } else if (msgObj.rejected) {
+                        else if (msgObj.rejected)
                             socket.close();
-                        } else if (msgObj.message) {
+                        else if (msgObj.message)
                             messageReceived(msgObj.message);
-                        } else if (msgObj.userList) {
+                        else if (msgObj.userList)
                             userListReceived(msgObj.userList);
-                        } else if (msgObj.userConnected) {
+                        else if (msgObj.userConnected)
                             userConnected(msgObj.userConnected);
-                        } else if (msgObj.userDisconnected) {
+                        else if (msgObj.userDisconnected)
                             userDiconnected(msgObj.userDisconnected);
-                        } else if (msgObj.userChangeName) {
+                        else if (msgObj.userChangeName)
                             userChangeName(msgObj.userChangeName)
-                        }
+                        
                     } catch (e) {
                         messageWarning({content: 'onMessage error: ' + event.data});
                         console.log(e)
