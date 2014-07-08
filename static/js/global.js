@@ -30,6 +30,7 @@ $(document).ready(function () {
 
     var windowHeight = $(document).height();
     var city = $('#city');
+    var clouds = $('#clouds');
     var ratio = city.attr('data-stellar-ratio');
 
     function updateStellarElement() {
@@ -44,30 +45,31 @@ $(document).ready(function () {
         updateStellarElement();
     });
 
-    /*
+
     var nbClouds = rand(10, 4);
     for (var i = 0; i < nbClouds; ++i) {
         var animationDuration, chanceToHaveOne, zIndex, delay;
 
         animationDuration = rand(100, 50) + 's';
-        chanceToHaveOne = Math.random() * (9.9 - 0.1) + 0.1;
+        chanceToHaveOne = Math.random() * (1.9 - 0.1) + 0.1;
         zIndex = Math.floor(chanceToHaveOne.toPrecision(3) * 10);
         delay = rand(15000);
 
-        city.append($(document.createElement('div'))
+        clouds.append($(document.createElement('div'))
                 .addClass('cloud')
                 .css({animationDuration: animationDuration
                     , zIndex: zIndex
                     , opacity: 0})
                 .attr({'data-stellar-ratio': chanceToHaveOne
-                    , 'data-sellar-offset-vertical': 400})
+                    , 'data-stellar-vertical-offset': -rand($(window).height(), 0)
+                    })
                 .delay(delay).queue(function (next) {
                     $(this).animate({opacity: 1}, 1000);
                     next();
                 })
         );
     }
-    */
+
 
     $.stellar({
         horizontalScrolling: false
