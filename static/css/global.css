@@ -42,6 +42,16 @@ body {
     }
 }
 
+#current-weather+ul {
+    min-width: inherit;
+}
+
+#current-weather+ul a {
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 0;
+}
+
 /* -------------------------------------------------------------------------------------------------- Cloud animation */
 .cloud {
     position: fixed;

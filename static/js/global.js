@@ -28,11 +28,17 @@ $(document).ready(function () {
     if ($.support.animation === undefined)
         return;
 
+    // VARS ------------------------------------------------------------------------------------------------------------
     var windowHeight = $(document).height();
     var city = $('#city');
     var clouds = $('#clouds');
     var ratio = city.attr('data-stellar-ratio');
 
+    var moonButton = $('#moon-button');
+    var cloudsButton = $('#clouds-button');
+    var currentWeatherImage = $('#current-weather').children();
+
+    // FUNCTIONS -------------------------------------------------------------------------------------------------------
     function updateStellarElement() {
         $(window).data('plugin_stellar').destroy();
 
@@ -41,34 +47,61 @@ $(document).ready(function () {
         $(window).data('plugin_stellar').init();
     }
 
+    function activateClouds() {
+        var nbClouds = rand(10, 4);
+        for (var i = 0; i < nbClouds; ++i) {
+            var animationDuration, chanceToHaveOne, zIndex, delay;
+
+            animationDuration = rand(100, 50) + 's';
+            chanceToHaveOne = Math.random() * (1.9 - 0.1) + 0.1;
+            zIndex = Math.floor(chanceToHaveOne.toPrecision(3) * 10);
+            delay = rand(15000);
+
+            clouds.append($(document.createElement('div'))
+                    .addClass('cloud')
+                    .css({animationDuration: animationDuration, zIndex: zIndex, opacity: 0})
+                    .attr({'data-stellar-ratio': chanceToHaveOne, 'data-stellar-vertical-offset': -rand($(window).height(), 0)
+                    })
+                    .delay(delay).queue(function (next) {
+                        $(this).animate({opacity: 1}, 1000);
+                        next();
+                    })
+            );
+        }
+
+        $.stellar('refresh');
+    }
+
+    // CONNECT TO EVENTS -----------------------------------------------------------------------------------------------
+    function disableClouds() {
+        clouds.empty();
+    }
+
+    moonButton.click(function (event) {
+        event.preventDefault();
+
+        disableClouds();
+
+        currentWeatherImage.attr('src', "/static/icons/moon-symbol-white-24px.png");
+
+        moonButton.addClass('hidden');
+        cloudsButton.removeClass('hidden');
+    });
+
+    cloudsButton.click(function(event) {
+        event.preventDefault();
+
+        activateClouds();
+
+        currentWeatherImage.attr('src', "/static/icons/little-clouds-white-24px.png");
+
+        cloudsButton.addClass('hidden');
+        moonButton.removeClass('hidden');
+    });
+
     $(window).resize(function(){
         updateStellarElement();
     });
-
-
-    var nbClouds = rand(10, 4);
-    for (var i = 0; i < nbClouds; ++i) {
-        var animationDuration, chanceToHaveOne, zIndex, delay;
-
-        animationDuration = rand(100, 50) + 's';
-        chanceToHaveOne = Math.random() * (1.9 - 0.1) + 0.1;
-        zIndex = Math.floor(chanceToHaveOne.toPrecision(3) * 10);
-        delay = rand(15000);
-
-        clouds.append($(document.createElement('div'))
-                .addClass('cloud')
-                .css({animationDuration: animationDuration
-                    , zIndex: zIndex
-                    , opacity: 0})
-                .attr({'data-stellar-ratio': chanceToHaveOne
-                    , 'data-stellar-vertical-offset': -rand($(window).height(), 0)
-                    })
-                .delay(delay).queue(function (next) {
-                    $(this).animate({opacity: 1}, 1000);
-                    next();
-                })
-        );
-    }
 
 
     $.stellar({
@@ -76,4 +109,5 @@ $(document).ready(function () {
     });
 
     updateStellarElement();
+    activateClouds();
 });
