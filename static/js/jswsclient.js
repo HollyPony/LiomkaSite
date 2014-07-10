@@ -52,7 +52,7 @@ $(window).ready(function () {
         toggleConnectionButton.text('Connect');
     }
 
-    function connected() {
+    function connected(message) {
         intervalID = setInterval(function(){ping();}, 40000);
         chatLog.prop('disabled', true);
         userList.prop('disabled', true);
@@ -63,7 +63,7 @@ $(window).ready(function () {
 
         toggleConnectionButton.text('Disconnect');
 
-        messageEvent({content: "Connected"});
+        messageEvent("Connected", message.time);
     }
 
     function connecting() {
@@ -80,19 +80,19 @@ $(window).ready(function () {
         initComponents();
         clearInterval(intervalID);
         userList.empty();
-        messageEvent({content: 'Disconnected'});
+        messageEvent('Disconnected');
     }
 
-    function messageWarning(msg) {
-        appendMessage($(document.createTextNode(msg.content)), 'text-warning', msg.time);
+    function messageWarning(msg, time) {
+        appendMessage($(document.createTextNode(msg)), 'text-warning', time);
     }
 
-    function messageEvent(msg) {
-        appendMessage($(document.createTextNode(msg.content)), 'text-muted', msg.time);
+    function messageEvent(msg, time) {
+        appendMessage($(document.createTextNode(msg)), 'text-muted', time);
     }
 
-    function messageError(msg) {
-        appendMessage($(document.createTextNode(msg.content)), 'text-danger', msg.time);
+    function messageError(msg, time) {
+        appendMessage($(document.createTextNode(msg)), 'text-danger', time);
     }
 
     function messageReceived(msg) {
@@ -100,7 +100,7 @@ $(window).ready(function () {
         appendMessage($(document.createElement('span')).append(
             $(document.createElement('span')).addClass('userName').addClass('text-info').text(msg.from.name)).append(
             $(document.createTextNode(msg.content))
-        ), 'messageReceived', msg.time);
+        ), 'messageReceived: ', msg.time);
 
         if (!window_has_focus)
             document.title = '(' + ++nbMissedMessage + ') ' +initialTitle;
@@ -127,30 +127,40 @@ $(window).ready(function () {
     // ------------------------------------------------------------------------
     // Treat events from WebSockets
     // ------------------------------------------------------------------------
-    function userListReceived(users) {
-        messageEvent({content: users.length+ ' people connected', time: users.time});
-        users.forEach(function (user) {
+    function userListReceived(message) {
+        messageEvent(message.content.length + ' people connected', message.time);
+        message.content.forEach(function (user) {
             userList.append($(document.createElement('dt')).text(user.name).attr('id', user.id));
         });
     }
 
-    function userConnected(user) {
-        messageEvent({content: user.name + ' is connected', time: user.time});
-        userList.append($(document.createElement('dt')).text(user.name).attr('id', user.id));
+    function userConnected(message) {
+        messageEvent(message.name + ' is connected', message.time);
+        userList.append($(document.createElement('dt')).text(message.name).attr('id', message.id));
     }
 
-    function userDiconnected(user) {
-        var element = $('#'+user.id);
+    function userDiconnected(message) {
+        var element = $('#' + message.id);
         if (element) {
-            messageEvent({content: element.text() + ' is disconnected', time: user.time});
+            messageEvent(element.text() + ' is disconnected', message.time);
             element.remove();
         }
     }
 
-    function userChangeName(user) {
-        var element = $('#'+user.id);
-        messageEvent({content: element.text() + ' as now know as ' + user.name, time: user.time});
-        element.textContent = user.name;
+    function userChangeName(message) {
+        var element = $('#' + message.userId);
+        messageEvent(message.oldName + ' as now know as ' + message.newName, message.time);
+        element.textContent = message.newName;
+    }
+
+    function historyReceived(history) {
+        history.content.forEach(function (message) {
+            messageReceived(message);
+        });
+    }
+
+    function unexpectedMessage(message) {
+        appendMessage($(document.createTextNode('Unexpected message: ' + message.toString())), 'unexpected')
     }
 
     // ------------------------------------------------------------------------
@@ -164,10 +174,23 @@ $(window).ready(function () {
         var text = userInput.val();
 
         if (text != '') {
+            var jtext = null;
+            if (text.match("^/")) {
+                if (text.match("^/nick "))
+                    jtext = JSON.stringify({"method": "nick",
+                                            "newName": text.substring(6)});
+                else if (text.match("^/history"))
+                    jtext = JSON.stringify({"method": "history"});
+            }
+
+            if (jtext == null)
+                jtext = JSON.stringify({"method": "message",
+                                        "content": text});
+
             try {
-                socket.send(JSON.stringify({"message": {"content": text}}));
+                socket.send(jtext);
             } catch (exception) {
-                messageError({content: 'Fail to send a message ' + text});
+                messageError('Fail to send a message ' + text);
             }
         }
 
@@ -204,12 +227,13 @@ $(window).ready(function () {
                 socket = new WebSocket(wsserver);
 
                 socket.onopen = function (event) {
-                    socket.send(JSON.stringify({"hello": {"name": userName.val()}}));
+                    socket.send(JSON.stringify({"method": "hello",
+                                                "name": userName.val()}));
                 };
 
                 socket.onclose = function (event) {
                     if (event.code != 1000)
-                        messageError({content: 'Cannot reach server ' + wsserver});
+                        messageError('Cannot reach server ' + wsserver);
                     else if (!event.wasClean)
                         messageWarning('The connection was not close properly, if you see this message: contact me');
                     disconnected();
@@ -219,29 +243,26 @@ $(window).ready(function () {
                 socket.onmessage = function (event) {
                     try {
                         var msgObj = JSON.parse(event.data);
-                        if (msgObj.accepted)
-                            connected(msgObj.accepted.time);
-                        else if (msgObj.rejected)
-                            socket.close();
-                        else if (msgObj.message)
-                            messageReceived(msgObj.message);
-                        else if (msgObj.userList)
-                            userListReceived(msgObj.userList);
-                        else if (msgObj.userConnected)
-                            userConnected(msgObj.userConnected);
-                        else if (msgObj.userDisconnected)
-                            userDiconnected(msgObj.userDisconnected);
-                        else if (msgObj.userChangeName)
-                            userChangeName(msgObj.userChangeName)
+                        switch (msgObj["method"]) {
+                            case "accepted": connected(msgObj); break;
+                            case "rejected": socket.close(); break;
+                            case "message": messageReceived(msgObj); break;
+                            case "userList": userListReceived(msgObj); break;
+                            case "userConnected": userConnected(msgObj); break;
+                            case "userDisconnected": userDiconnected(msgObj); break;
+                            case "nick": userChangeName(msgObj); break;
+                            case "history": historyReceived(msgObj); break;
+                            default: unexpectedMessage(event); break;
+                        }
 
                     } catch (e) {
-                        messageWarning({content: 'onMessage error: ' + event.data});
+                        messageWarning('onMessage error: ' + event.data);
                         console.log(e)
                     }
                 };
 
             } catch (exception) {
-                messageWarning({content: "Error: " + exception});
+                messageWarning("Error: " + exception);
                 disconnected();
                 socket = null;
             }
