@@ -34,8 +34,8 @@ $(document).ready(function () {
     var clouds = $('#clouds');
     var ratio = city.attr('data-stellar-ratio');
 
-    var moonButton = $('#moon-button');
-    var cloudsButton = $('#clouds-button');
+    var moonButton = $('#moon-symbol-button');
+    var cloudsButton = $('#little-clouds-button');
     var currentWeatherElement = $('#current-weather');
     var currentWeatherImage = currentWeatherElement.children();
 
