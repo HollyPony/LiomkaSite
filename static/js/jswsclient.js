@@ -155,6 +155,8 @@ $(window).ready(function () {
         chatLog.append($(document.createElement('p')).addClass(messageType).append(
             $(document.createElement('span')).addClass('timeMessage').addClass('text-muted').text(formattedTime)).append(
             blocToAppend));
+        if (chatLog.filter(':animated').length > 0)
+            chatLog.stop()
         chatLog.animate({scrollTop: chatLog[0].scrollHeight}, 'slow');
     }
 
