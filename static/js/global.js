@@ -53,22 +53,25 @@ $(document).ready(function () {
     function activateClouds() {
         var nbClouds = rand(10, 4);
         for (var i = 0; i < nbClouds; ++i) {
-            var animationDuration, chanceToHaveOne, zIndex, delay;
+            var animationDuration, ratio, zIndex, delay, offset;
 
-            animationDuration = rand(100, 50) + 's';
-            chanceToHaveOne = Math.random() * (1.9 - 0.1) + 0.1;
-            zIndex = Math.floor(chanceToHaveOne.toPrecision(3) * 10);
-            delay = rand(15000);
+            animationDuration = rand(100, 80) + 's';
+            ratio = Math.random() * (1.9 - 0.1) + 0.1;
+            zIndex = Math.floor(ratio.toPrecision(3) * 10);
+            delay = rand(45000);
+            offset = rand($(window).height());
 
             clouds.append($(document.createElement('div'))
                     .addClass('cloud')
-                    .css({animationDuration: animationDuration, zIndex: zIndex, opacity: 0})
-                    .attr({'data-stellar-ratio': chanceToHaveOne, 'data-stellar-vertical-offset': -rand($(window).height(), 0)
-                    })
+                    .css({animationDuration: animationDuration
+                        , zIndex: zIndex
+                        , top: offset * ratio})
+                    .attr({'data-stellar-ratio': ratio})
                     .delay(delay).queue(function (next) {
-                        $(this).animate({opacity: 1}, 1000);
+                        $(this).css('animation-play-state', 'running');
                         next();
                     })
+
             );
         }
 

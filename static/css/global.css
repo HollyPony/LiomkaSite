@@ -63,9 +63,25 @@ body {
     background: url('/static/cloud.png') no-repeat -100% 0;
 
     animation: animateCloud 3s linear 0s infinite;
+    animation-play-state: paused;
 }
 
-@keyframes animateCloud {0% { background-position: -50% 0; } 100% { background-position: 150% 0; }}
+@keyframes animateCloud {
+    0% {
+        opacity: 0;
+        background-position: -50% 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+        background-position: 150% 0;
+    }
+}
 
 /* -------------------------------------------------------------------------------------------------- Custom Bosstrap */
 /* AFFIX ------------------------------------------------------------------------------------------------------------ */
