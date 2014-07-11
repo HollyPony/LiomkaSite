@@ -28,6 +28,40 @@ $(window).ready(function () {
     var window_has_focus;
     var nbMissedMessage = 0;
 
+
+    function haiku() {
+        var adjs = [
+            "autumn", "hidden", "bitter", "misty", "silent", "empty", "dry", "dark",
+            "summer", "icy", "delicate", "quiet", "white", "cool", "spring", "winter",
+            "patient", "twilight", "dawn", "crimson", "wispy", "weathered", "blue",
+            "billowing", "broken", "cold", "damp", "falling", "frosty", "green",
+            "long", "late", "lingering", "bold", "little", "morning", "muddy", "old",
+            "red", "rough", "still", "small", "sparkling", "throbbing", "shy",
+            "wandering", "withered", "wild", "black", "young", "holy", "solitary",
+            "fragrant", "aged", "snowy", "proud", "floral", "restless", "divine",
+            "polished", "ancient", "purple", "lively", "nameless"
+        ];
+        var nouns = [
+            "waterfall", "river", "breeze", "moon", "rain", "wind", "sea", "morning",
+            "snow", "lake", "sunset", "pine", "shadow", "leaf", "dawn", "glitter",
+            "forest", "hill", "cloud", "meadow", "sun", "glade", "bird", "brook",
+            "butterfly", "bush", "dew", "dust", "field", "fire", "flower", "firefly",
+            "feather", "grass", "haze", "mountain", "night", "pond", "darkness",
+            "snowflake", "silence", "sound", "sky", "shape", "surf", "thunder",
+            "violet", "water", "wildflower", "wave", "water", "resonance", "sun",
+            "wood", "dream", "cherry", "tree", "fog", "frost", "voice", "paper",
+            "frog", "smoke", "star"
+        ];
+        var rnd = Math.floor(Math.random() * Math.pow(2,12));
+        var adj = adjs[rnd>>6%64];
+        var noun = nouns[rnd%64];
+        return adj.charAt(0).toUpperCase() + adj.slice(1)
+            + ' '
+            + noun.charAt(0).toUpperCase() + noun.slice(1);
+    }
+
+    userName.val(haiku());
+
     // -----------------------------------------------------------------------------------------------------------------
     // Listen from window
     // -----------------------------------------------------------------------------------------------------------------
