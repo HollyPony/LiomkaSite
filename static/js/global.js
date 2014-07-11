@@ -36,10 +36,13 @@ $(document).ready(function () {
 
     var moonButton = $('#moon-button');
     var cloudsButton = $('#clouds-button');
-    var currentWeatherImage = $('#current-weather').children();
+    var currentWeatherElement = $('#current-weather');
+    var currentWeatherImage = currentWeatherElement.children();
 
     // FUNCTIONS -------------------------------------------------------------------------------------------------------
     function updateStellarElement() {
+        //var newPosition = windowHeight + $(window).height();
+        //city.attr({'data-stellar-vertical-offset': -newPosition}).animate({opacity: 1}, 1000);
         $(window).data('plugin_stellar').destroy();
 
         var newPosition = (windowHeight - $(window).height()) * ratio;
@@ -70,6 +73,23 @@ $(document).ready(function () {
         }
 
         $.stellar('refresh');
+    }
+
+    function initWeather () {
+        var src = currentWeatherImage.attr('src');
+        var begin = src.indexOf('icons/');
+        var end = src.lastIndexOf('-white');
+        var currentWeather = src.substring(begin + 6, end);
+
+        currentWeatherElement.parent()
+            .find('#' + currentWeather + '-button')
+            .addClass('hidden');
+
+        switch (currentWeather) {
+            case 'little-cloud':
+                activateClouds();
+                break;
+        }
     }
 
     // CONNECT TO EVENTS -----------------------------------------------------------------------------------------------
@@ -104,10 +124,11 @@ $(document).ready(function () {
     });
 
 
+    // INIT COMPONENTS -------------------------------------------------------------------------------------------------
     $.stellar({
         horizontalScrolling: false
     });
 
     updateStellarElement();
-    activateClouds();
+    initWeather();
 });
