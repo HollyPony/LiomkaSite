@@ -1,16 +1,3 @@
-.project > .panel-footer .century-upper-font span {
-    font-size: 1.1em;
-}
-
-.project > .panel-footer .century-upper-font span:before {
-    content: '#';
-    color: #80ff00;
-}
-
-.project > .panel-footer .century-upper-font span:after {
-    content: ' ';
-}
-
 .subpanel-title {
     color: rgb(111, 84, 153);
 }
@@ -58,16 +45,6 @@
 #scrollspy a:focus {
     color: rgb(111, 84, 153);
 }
-
-/* Used for collapse submenu
-#scrollspy li ul {
-    display: none;
-}
-
-#scrollspy .active ul {
-    display: block;
-}
-*/
 
 #scrollspy li ul li {
     padding-left: 1.5em;
