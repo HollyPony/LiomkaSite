@@ -11,10 +11,8 @@ $(document).ready(function () {
     if ($.support.animation === undefined)
         return;
 
-
     // Init Vars
-    var elementsList = $('#cv').find('li');
-    var entriesDetails = elementsList.find('.entry-details');
+    var entriesDetails = $('#cv').find('li').find('.entry-details');
 
     // Init DOM
     entriesDetails.css({ opacity: '0'});
