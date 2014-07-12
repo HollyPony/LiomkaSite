@@ -15,12 +15,9 @@ $(document).ready(function () {
     // Init Vars
     var elementsList = $('#cv').find('li');
     var entriesDetails = elementsList.find('.entry-details');
-    var affixAboutMe = $("[data-spy='affix']");
 
     // Init DOM
     entriesDetails.css({ opacity: '0'});
-    affixAboutMe.css({width: affixAboutMe.width()});
-
     entriesDetails.waypoint(function() {
         $(this).css({'visibility':'visible', 'left': '50%'}).stop()
             .animate({left: '0%', opacity: '1'}, 1000, 'easeOutExpo');

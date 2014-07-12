@@ -85,14 +85,40 @@ body {
 
 /* -------------------------------------------------------------------------------------------------- Custom Bosstrap */
 /* AFFIX ------------------------------------------------------------------------------------------------------------ */
-.affix-custom.affix-bottom,
-.affix-custom.affix {
-    width: auto;
+
+.affix-custom
+
+.col-md-2 .affix-custom.affix,
+.col-md-2 .affix-custom.affix-bottom {
+    width: 165px;
+}
+
+.col-md-3 .affix-custom.affix,
+.col-md-3 .affix-custom.affix-bottom {
+    width: 263px;
+}
+
+@media (max-width: 1200px) {
+    .col-md-2 .affix-custom.affix-bottom,
+    .col-md-2 .affix-custom.affix {
+        width: 132px;
+    }
+
+    .col-md-3 .affix-custom.affix,
+    .col-md-3 .affix-custom.affix-bottom {
+        width: 213px;
+    }
 }
 
 .affix-custom.affix {
-    position: fixed;
     top: 20px;
+}
+
+@media (max-width: 992px) {
+    .affix-custom.affix {
+        position: static !important;
+        width: 100% !important;
+    }
 }
 
 .affix-custom.affix-bottom {
