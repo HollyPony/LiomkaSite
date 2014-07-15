@@ -3,6 +3,10 @@ body {
     overflow-x: hidden;
 }
 
+ul {
+    list-style: outside none none;
+}
+
 .main {
     z-index: 100;
     position: relative;
@@ -164,12 +168,21 @@ body {
     color: #d2d2d2;
 }
 
+.panel-body > ul {
+    padding-left: 0;
+}
+
+.panel-body > ul ul {
+    padding-left: 1.5em;
+    list-style: disc outside;
+}
+
 .panel-custom .panel-body {
     background-color: rgba(255, 255, 255, 0.945);
 }
 
 .panel-custom .panel-body a {
-    color: #c37600;
+    color: #c37600 !important;
 }
 .panel-custom .panel-body a:hover {
     color: rgb(111, 84, 153);
