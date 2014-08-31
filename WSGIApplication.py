@@ -1,14 +1,15 @@
 __author__ = 'Liomka'
 
 import Settings
+import Database
 
 import tornado.web
 import tornado.wsgi
 import tornado.httpserver
 
-
 class Application(tornado.wsgi.WSGIApplication):
     def __init__(self):
+        database = Database.Database()
         settings = {
             "site_title": "Liomka.IO",
             "template_path": Settings.TEMPLATE_PATH,
