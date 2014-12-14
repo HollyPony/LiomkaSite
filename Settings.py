@@ -1,4 +1,7 @@
 import os
+
+__author__ = 'Liomka'
+
 dirname = os.path.dirname(__file__)
 
 DATABASE_NAME = os.environ.get("DATABASE_NAME", "LiomkaSite")

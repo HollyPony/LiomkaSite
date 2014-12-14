@@ -1,6 +1,6 @@
-__author__ = 'Liomka'
-
 from WSGIApplication import Application
+
+__author__ = 'Liomka'
 
 application = Application()
 

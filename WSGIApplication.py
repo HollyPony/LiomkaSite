@@ -1,11 +1,11 @@
-__author__ = 'Liomka'
+import tornado.web
+import tornado.wsgi
+import tornado.httpserver
 
 import Settings
 from datas.ProjectsDao import ProjectsDao
 
-import tornado.web
-import tornado.wsgi
-import tornado.httpserver
+__author__ = 'Liomka'
 
 class Application(tornado.wsgi.WSGIApplication):
     def __init__(self):
