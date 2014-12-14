@@ -15,12 +15,45 @@ $(document).ready(function () {
     var entriesDetails = $('#cv').find('li').find('.entry-details');
 
     // Init DOM
-    entriesDetails.css({ opacity: '0'});
-    entriesDetails.waypoint(function() {
-        $(this).css({'visibility':'visible', 'left': '50%'}).stop()
-            .animate({left: '0%', opacity: '1'}, 1000, 'easeOutExpo');
-    }, {
-        offset: '80%',
-        triggerOnce: true
+    entriesDetails.css({ opacity: '0', left: '50%'});
+
+    entriesDetails.waypoint({
+        handler: function(direction) {
+            if (direction == 'down')
+                $(this).css({opacity: '0', left: '50%'})
+        },
+        offset: function() {
+            return -$(this).height();
+        }
+    });
+
+    entriesDetails.waypoint({
+        handler: function(direction) {
+            if (direction == 'up')
+                $(this).animate({left: '0%', opacity: '1'}, 1000, 'easeOutExpo');
+        },
+        offset: function() {
+            return -($(this).height() - 40 );
+        }
+    });
+
+    entriesDetails.waypoint({
+        handler: function (direction) {
+            if (direction == 'down')
+                $(this).animate({left: '0%', opacity: '1'}, 1000, 'easeOutExpo');
+        },
+        offset: function () {
+            return $(window).height() - 40;
+        }
+    });
+
+    entriesDetails.waypoint({
+        handler: function (direction) {
+            if (direction == 'up')
+                $(this).css({opacity: '0', left: '50%'})
+        },
+        offset: function () {
+            return $(window).height();
+        }
     });
 });

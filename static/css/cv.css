@@ -1,6 +1,5 @@
-#cv ul {
+#cv > ul {
     padding-left: 0;
-    list-style: outside none none;
 }
 
 /* ------------------------------------- Vertical line ------------------------------------- */

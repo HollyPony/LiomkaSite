@@ -25,7 +25,7 @@ $(window).ready(function () {
     var socket = null;
 
     var initialTitle = document.title;
-    var window_has_focus;
+    var window_has_focus = true;
     var nbMissedMessage = 0;
 
 
@@ -156,7 +156,7 @@ $(window).ready(function () {
             $(document.createElement('span')).addClass('timeMessage').addClass('text-muted').text(formattedTime)).append(
             blocToAppend));
         if (chatLog.filter(':animated').length > 0)
-            chatLog.stop()
+            chatLog.stop();
         chatLog.animate({scrollTop: chatLog[0].scrollHeight}, 'slow');
     }
 
