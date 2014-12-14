@@ -58,7 +58,9 @@ uiDesigner.xml
 .idea/dictionaries
 .idea/inspectionProfiles
 .idea
-LiomkaSite.iml
+*.iml
 TornadoEnv
 unused
 deployCommand.sh
+
+venv
