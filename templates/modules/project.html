@@ -1,0 +1,31 @@
+{% autoescape None %}
+
+<!-- {{ project.name }} -->
+<div id="{{ project.anchor_name }}" class="panel panel-custom project">
+    <div class="panel-heading">
+        <h3>{{ project.name }} <small>- {{ project.title }}</small></h3>
+    </div>
+    <div class="panel-body">
+        {{ project.content }}
+
+        {% for sub_project in project.sub_projects %}
+            <!-- {{ sub_project.title }} -->
+            <div class="subpanel">
+                <div  id="{{ project.anchor_name }}-{{ sub_project.anchor_name }}" class="project">
+                    <div class="subpanel-title">
+                        <h4>{{ sub_project.title }}</h4>
+                    </div>
+                    {{ sub_project.content }}
+                </div>
+            </div>
+        {% end %}
+    </div>
+
+    <div class="panel-footer">
+        <span class="century-upper-font">
+            {% for tag in project.tags %}
+                <span>{{ tag.name }}</span>
+            {% end %}
+        </span>
+    </div>
+</div>
