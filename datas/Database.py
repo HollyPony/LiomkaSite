@@ -11,10 +11,7 @@ class Database(object):
 
     class __Database:
         def __init__(self):
-            self.engine = create_engine("postgresql+psycopg2://"
-                                        + Settings.DATABASE_USER + ":" + Settings.DATABASE_PASS
-                                        + "@" + Settings.DATABASE_HOST + ":" + Settings.DATABASE_PORT
-                                        + "/" + Settings.DATABASE_NAME)
+            self.engine = create_engine(Settings.DATABASE_URI)
             self.Session = sessionmaker(bind=self.engine)
 
             print("Connected to db")
