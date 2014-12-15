@@ -1,14 +1,14 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
-from sqlalchemy import Table, Column, Integer, String, Boolean, ForeignKey
+from sqlalchemy import Table, Column, ForeignKey, Integer, String, Boolean, DateTime
 
 __author__ = 'Liomka'
 
 Base = declarative_base()
 
 project_tags = Table("projecttags", Base.metadata,
-                     Column("project_id", Integer, ForeignKey("project.id")),
-                     Column("tag_id", Integer, ForeignKey("tag.id"))
+                     Column("project_id", Integer, ForeignKey("project.id"), nullable=False),
+                     Column("tag_id", Integer, ForeignKey("tag.id"), nullable=False, index=True)
 )
 
 
@@ -20,9 +20,12 @@ class Project(Base):
     title = Column(String, nullable=False)
     description = Column(String, nullable=False)
     content = Column(String, nullable=False)
-    is_professional = Column(Boolean, name="is_professional", nullable=False)
-    ordering = Column(Integer, nullable=False)
-    anchor_name = Column(String)
+    is_professional = Column(Boolean, nullable=False)
+    ordering = Column(Integer, nullable=True, unique=True, default=0)
+    date_last_update = Column(DateTime, nullable=False)
+    date_creation = Column(DateTime, nullable=False)
+    preview = Column(String, nullable=True)
+    anchor_name = Column(String, nullable=False)
     sub_projects = relationship("SubProject", order_by="SubProject.ordering", backref="project")
     tags = relationship("Tag", secondary=project_tags)
 
@@ -33,9 +36,9 @@ class SubProject(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String, nullable=False)
     content = Column(String, nullable=False)
-    ordering = Column(Integer, nullable=False)
+    ordering = Column(Integer, nullable=True)
     anchor_name = Column(String)
-    project_id = Column(Integer, ForeignKey('project.id'))
+    project_id = Column(Integer, ForeignKey('project.id'), nullable=False)
 
 
 class Tag(Base):
