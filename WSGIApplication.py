@@ -7,6 +7,7 @@ from datas.ProjectsDao import ProjectsDao
 
 __author__ = 'Liomka'
 
+
 class Application(tornado.wsgi.WSGIApplication):
     def __init__(self):
         self.projectDao = ProjectsDao()

@@ -2,7 +2,8 @@ from __future__ import with_statement
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 from logging.config import fileConfig
-import sys, os
+import sys
+import os
 
 # append current path to get the app
 sys.path.append(os.getcwd())
