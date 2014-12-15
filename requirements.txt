@@ -2,3 +2,4 @@ certifi==14.05.14
 git+https://github.com/tornadoweb/tornado.git@a91b15c3907e8f73031e75cd45b0417b184f0a9a#egg=tornado
 psycopg2
 SQLAlchemy
+alembic
