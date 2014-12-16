@@ -1,6 +1,7 @@
 from alembic.config import Config
 from alembic import command
 from WSGIApplication import Application
+import Settings
 
 __author__ = 'Liomka'
 
@@ -14,6 +15,5 @@ application = Application()
 # Run ...
 if __name__ == "__main__":
     import tornado.ioloop
-    application.listen(8080)
+    application.listen(Settings.SERVER_PORT)
     tornado.ioloop.IOLoop.instance().start()
-

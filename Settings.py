@@ -7,6 +7,9 @@ dirname = os.path.dirname(__file__)
 STATIC_PATH = os.path.join(dirname, 'static')
 TEMPLATE_PATH = os.path.join(dirname, 'templates')
 
+# Server params
+SERVER_PORT = os.environ.get("SERVER_PORT", "8080")
+
 # DB params
 DATABASE_NAME = os.environ.get("DATABASE_NAME", "LiomkaSite")
 DATABASE_HOST = os.environ.get("DATABASE_HOST", "localhost")
