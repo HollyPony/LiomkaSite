@@ -1,4 +1,4 @@
-"""empty message
+"""Init database
 
 Revision ID: 1623c595aff9
 Revises: 
@@ -15,13 +15,18 @@ depends_on = None
 from alembic import op
 import sqlalchemy as sa
 
+
 def upgrade():
-    # Structure
+    """
+    Init the database with the Projects structure
+    :return:
+    """
+    # Structure --------------------------------------------------------------------------------------------------------
     tag = op.create_table('tag',
-                    sa.Column('id', sa.Integer(), nullable=False),
-                    sa.Column('name', sa.String(), nullable=False),
-                    sa.PrimaryKeyConstraint('id')
-                    )
+                sa.Column('id', sa.Integer(), nullable=False),
+                sa.Column('name', sa.String(), nullable=False),
+                sa.PrimaryKeyConstraint('id')
+    )
     project = op.create_table('project',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('name', sa.String(), nullable=False),
@@ -36,28 +41,26 @@ def upgrade():
                     sa.Column('anchor_name', sa.String(), nullable=False),
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint('ordering')
-                    )
+    )
     projecttags = op.create_table('projecttags',
-                    sa.Column('project_id', sa.Integer(), nullable=False),
-                    sa.Column('tag_id', sa.Integer(), nullable=False),
-                    sa.ForeignKeyConstraint(['project_id'], ['project.id'], ),
-                    sa.ForeignKeyConstraint(['tag_id'], ['tag.id'], )
-                    )
+                        sa.Column('project_id', sa.Integer(), nullable=False),
+                        sa.Column('tag_id', sa.Integer(), nullable=False),
+                        sa.ForeignKeyConstraint(['project_id'], ['project.id'], ),
+                        sa.ForeignKeyConstraint(['tag_id'], ['tag.id'], )
+    )
     op.create_index(op.f('ix_projecttags_tag_id'), 'projecttags', ['tag_id'], unique=False)
     sub_project = op.create_table('sub_project',
-                    sa.Column('id', sa.Integer(), nullable=False),
-                    sa.Column('title', sa.String(), nullable=False),
-                    sa.Column('content', sa.String(), nullable=False),
-                    sa.Column('ordering', sa.Integer(), nullable=True),
-                    sa.Column('anchor_name', sa.String(), nullable=True),
-                    sa.Column('project_id', sa.Integer(), nullable=False),
-                    sa.ForeignKeyConstraint(['project_id'], ['project.id'], ),
-                    sa.PrimaryKeyConstraint('id')
-                    )
+                        sa.Column('id', sa.Integer(), nullable=False),
+                        sa.Column('title', sa.String(), nullable=False),
+                        sa.Column('content', sa.String(), nullable=False),
+                        sa.Column('ordering', sa.Integer(), nullable=True),
+                        sa.Column('anchor_name', sa.String(), nullable=True),
+                        sa.Column('project_id', sa.Integer(), nullable=False),
+                        sa.ForeignKeyConstraint(['project_id'], ['project.id'], ),
+                        sa.PrimaryKeyConstraint('id')
+    )
 
-    # ------------------------------------------------------------------------------------------------------------------
-    # Datas
-
+    # Datas ------------------------------------------------------------------------------------------------------------
     # Tag
     op.bulk_insert(
         tag,
@@ -201,6 +204,10 @@ def upgrade():
 
 
 def downgrade():
+    """
+    Restore database to nothing
+    :return:
+    """
     op.drop_table('sub_project')
     op.drop_index(op.f('ix_projecttags_tag_id'), table_name='projecttags')
     op.drop_table('projecttags')
